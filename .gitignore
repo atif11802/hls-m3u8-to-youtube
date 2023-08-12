@@ -1,0 +1,11 @@
+.env
+node_modules
+package-lock.json
+yarn.lock
+
+media
+v1_recordings_db.json
+video_ids.json
+video_ids_download_data.json
+client_secret.json
+client_oauth_token.json
