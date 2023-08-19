@@ -61,9 +61,23 @@ const getVideoByReferenceId = async (reference_id) => {
   }
 };
 
+const deleteVideoById = async (id) => {
+  try {
+    const response = await videoClient.delete(
+      `/libraries/${libraryId}/videos/${id}`
+    );
+    console.log("deleteVideoById", id, response.data);
+    return response.data;
+  } catch (error) {
+    console.log("ERROR deleteVideoById", id);
+    return null;
+  }
+};
+
 module.exports = {
   getVideoById,
   listVideos,
   getVideoByCustomId,
   getVideoByReferenceId,
+  deleteVideoById,
 };
