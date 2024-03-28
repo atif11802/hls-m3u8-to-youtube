@@ -89,8 +89,6 @@ const uploadVideo = async (title, FILE_PATH, filename) => {
 									}
 								);
 
-								console.log({ getBunnyDetails });
-
 								results.push({
 									title,
 									filename,
