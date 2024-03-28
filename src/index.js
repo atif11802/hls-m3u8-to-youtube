@@ -29,6 +29,12 @@ const getVideoIdsData = async () => {
 			console.log("[x] No response for id", id);
 			continue;
 		}
+
+		if (response?.status !== "playable") {
+			console.log("[x] Video not playable", id);
+			continue;
+		}
+
 		const { result } = response;
 		console.log();
 		arr.push({
