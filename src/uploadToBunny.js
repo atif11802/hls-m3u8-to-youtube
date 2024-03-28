@@ -58,7 +58,7 @@ const uploadVideo = async (title, FILE_PATH, filename) => {
 
 					axios
 						.request(optionsToUpdateVideo)
-						.then((response) => {
+						.then(async (response) => {
 							fs.writeFileSync(
 								`media/upload/${filename}.json`,
 								JSON.stringify({
@@ -79,9 +79,24 @@ const uploadVideo = async (title, FILE_PATH, filename) => {
 								);
 								let results = JSON.parse(data);
 
-								console.log(results, "results");
+								const getBunnyDetails = await axios.get(
+									`${process.env.BUNNY_STREAM_BASE_URL}/library/${process.env.BUNNY_STREAM_LIBRARY_ID}/videos/${video_id}`,
+									{
+										headers: {
+											AccessKey: process.env.BUNNY_API_KEY,
+											Accept: "application/json",
+										},
+									}
+								);
 
-								results.push({ title, filename, bunny_id: video_id });
+								console.log({ getBunnyDetails });
+
+								results.push({
+									title,
+									filename,
+									bunny_id: video_id,
+									bunny_details: getBunnyDetails.data,
+								});
 
 								fs.writeFileSync(
 									path.resolve(__dirname, "data", "uploaded_videos.json"),
