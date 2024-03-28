@@ -30,7 +30,7 @@ const getVideoIdsData = async () => {
 			continue;
 		}
 
-		if (response?.status !== "playable") {
+		if (response?.result?.status !== "playable") {
 			console.log("[x] Video not playable", id);
 			continue;
 		}
