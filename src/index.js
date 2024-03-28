@@ -22,7 +22,7 @@ const getVideoIdsData = async () => {
 	}
 	const arr = [];
 	let i = 0;
-	for (const id of videoIds.splice(0, 2)) {
+	for (const id of videoIds) {
 		console.log("Fetching", i++, "of", videoIds.length);
 		const response = await getVideoById(id);
 		if (!response) {
