@@ -91,7 +91,7 @@ const execute = async () => {
 
 		console.log({ abspath });
 
-		if (!fs.existsSync(abspath) && !fs.existsSync(downloadFolder)) {
+		if (!fs.existsSync(abspath)) {
 			try {
 				await downloadSingleVideo({ m3u8Url, filename });
 			} catch (error) {
